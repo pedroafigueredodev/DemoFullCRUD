@@ -1,0 +1,97 @@
+<form  #userForm='ngForm' [formGroup]="addUserForm" (ngSubmit)="onSubmit(userForm)">
+    <input hidden name="optionSelected">
+    <div class="container ">
+        <br>
+        <div class="row">
+            <div class="col-12" *ngIf="addMode">
+                <h2>Add new user</h2>
+                <label>Some user information it's required</label>
+            </div>
+            <div class="col-12" *ngIf="!addMode">
+                <h2>Edit user</h2>
+                <label>Edit some user infoermation</label>
+            </div>
+            
+            <div class="col-12">
+                
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Placeholder" [formControl]="addUserForm.controls.name" required>
+                <mat-error *ngIf="addUserFormCheckError('name','required')">These field is required</mat-error>
+            </mat-form-field>
+            </div>
+
+            <div class="col-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Placeholder" [formControl]="addUserForm.controls.username" required>
+                <mat-error *ngIf="addUserFormCheckError('username','required')">These field is required</mat-error>
+            </mat-form-field>
+            </div>
+
+            <div class="col-4">
+                <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Placeholder" [formControl]="addUserForm.controls.email" required>
+                <mat-error *ngIf="addUserFormCheckError('email','email')">Invalid email address</mat-error>
+                <mat-error *ngIf="addUserFormCheckError('email','required')">These field is required</mat-error>
+                
+                </mat-form-field>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-4">
+                <mat-form-field appearance="outline">
+                <mat-label>Phone</mat-label>
+                <input matInput placeholder="Placeholder" [formControl]="addUserForm.controls.phone" type="number" required>
+                <mat-error *ngIf="addUserFormCheckError('phone','required')">These field is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-4">
+                <mat-form-field appearance="outline">
+                <mat-label>Website</mat-label>
+                <input matInput placeholder="Placeholder" [formControl]="addUserForm.controls.website" required>
+                <mat-error *ngIf="addUserFormCheckError('website','required')">These field is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-4">
+                <mat-form-field appearance="outline">
+                <mat-label>Company</mat-label>
+                <input matInput placeholder="Placeholder" [formControl]="addUserForm.controls.company" required>
+                <mat-error *ngIf="addUserFormCheckError('company','required')">These field is required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            
+
+            <div class="col-4">
+                <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Placeholder" [formControl]="addUserForm.controls.address" required>
+                <mat-error *ngIf="addUserFormCheckError('address','required')">These field is required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <button mat-raised-button color="primary" type="submit" [disabled]="!addUserForm.valid" *ngIf="addMode">Save</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!addUserForm.valid" *ngIf="!addMode">Edit</button>
+            <button mat-stroked-button color="primary" routerLink="/">Cancel</button>
+            
+        </div>
+
+    </div>
+</form>

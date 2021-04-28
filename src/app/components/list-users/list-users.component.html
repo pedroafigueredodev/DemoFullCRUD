@@ -1,0 +1,113 @@
+<router-outlet></router-outlet>
+<div class="example-container mat-elevation-z8 table-container">
+  <div class="search-input">
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search text here" #input>
+    </mat-form-field>
+  </div>
+
+  <div class="">  
+
+    <table mat-table [dataSource]="dataSource" matSort *ngIf="dataSource; else cargando">
+
+      
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+  
+     
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.phone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Company </th>
+        <td mat-cell *matCellDef="let row"> {{row.company}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Operations">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Operations </th>
+        <td mat-cell *matCellDef="let row" class=".op-tr">
+          
+          <div class="op-tr">
+          <button mat-icon-button class="col-4" (click)="openDialog(row)" >
+            <mat-icon >description</mat-icon>
+          </button>
+          
+          <a [routerLink]="['/edit-user/',row._id]">
+          <button mat-icon-button class="col-4" >
+            <mat-icon>edit</mat-icon>
+          </button>
+           </a>
+        
+
+          <button mat-icon-button color="warn" class="col-4" (click)="deleteUserBox(row._id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data to show!</td>
+      </tr>
+    </table>
+
+    <ng-template #cargando>
+      <div class="container">
+        <div class="row">
+          <div class="col-3 centered-element">
+            <mat-spinner></mat-spinner>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-5 centered-element">
+            <br>
+            <h3>Loading components, please wait!</h3>
+          </div>
+        </div>
+        
+      </div>
+    </ng-template>
+
+    
+  </div>
+
+  <div class="container footer-controls">
+    <div class="row">
+      <div class="col-2">
+        <a routerLink="/add-user">
+        <button mat-fab color="primary" aria-label="Add new user">
+          <mat-icon>add</mat-icon>
+        </button>
+      </a>
+
+      <a routerLink='user-details'> </a>
+    </div>
+      <div class="col-10">
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+
+      
+    </div>
+  </div>
+
+  
+  
+
+</div>

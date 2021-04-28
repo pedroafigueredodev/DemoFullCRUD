@@ -1,0 +1,35 @@
+delete [ok]
+edit [ok]
+details [ok]
+
+add user validation email valid [ok]
+
+add spinner on list-users [ok]
+
+add user make phone number [ok]
+
+log errors with swal [ok]
+
+connect node -> atlas
+
+subscribers delete subscriptions
+
+refresh mongo
+
+
+
+// const url = "mongodb+srv://admin:<Adminadmin>@cluster0.tux4e.mongodb.net/crud-employees?retryWrites=true&w=majority";
+
+// const connectionParams={
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true 
+// }
+
+// mongoose.connect(url,connectionParams)
+//     .then( () => {
+//         console.log('Connected to database ')
+//     })
+//     .catch( (err) => {
+//         console.error(`Error connecting to the database. \n${err}`);
+//     })

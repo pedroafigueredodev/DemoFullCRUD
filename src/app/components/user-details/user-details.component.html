@@ -1,0 +1,33 @@
+
+<div class="container">
+    <h2>User details</h2>
+    <div class="row col-6 ">
+        <div class="col-12">
+            <p>Name: {{selectedUser.name}}</p>
+        </div>
+        <div class="col-12">
+            <p>Username: {{selectedUser.username}}</p>
+        </div>
+
+        <div class="col-12">
+            <p>Email: {{selectedUser.email}}</p>
+        </div>
+        <div class="col-12">
+            <p>Address: {{selectedUser.address}}</p>
+        </div>
+        <div class="col-12">
+            <p>Phone: {{selectedUser.phone}}</p>
+        </div>
+        <div class="col-12">
+            <p>Website: {{selectedUser.website}}</p>
+        </div>
+        <div class="col-12">
+            <p>Company: {{selectedUser.company}}</p>
+        </div>
+           
+    </div>
+    
+    <div>
+        <button mat-raised-button (click)="closeDialog()">Back</button>
+    </div>
+</div>
