@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ManageUserService } from '../../services/manage-user.service'
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { UserData } from 'src/app/model/user';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -36,10 +38,9 @@ export class AddUserComponent implements OnInit {
      private muService: ManageUserService,
      private router: Router,
      private route: ActivatedRoute,
-     ) 
-     {
+     ){}
 
-     }
+     ngOnDestroy(){}
 
    public addUserFormCheckError (controlName: string, errorName: string){
       return this.addUserForm.controls[controlName].hasError(errorName);

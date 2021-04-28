@@ -8,15 +8,20 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef,MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UserDetailsComponent } from '../user-details/user-details.component';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 
 
+
+
+@AutoUnsubscribe()
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.css'],
   providers: [ManageUserService]
 })
+
 
 export class ListUsersComponent implements AfterViewInit, OnInit  {
   displayedColumns: string[] = ['name', 'email', 'phone', 'company', 'Operations' ];
@@ -41,6 +46,8 @@ export class ListUsersComponent implements AfterViewInit, OnInit  {
     ) {
   //this.dataSource = new MatTableDataSource(this.userList);
   }
+
+  ngOnDestroy(){}
 
 
   loadUserList(){
@@ -124,8 +131,6 @@ export class ListUsersComponent implements AfterViewInit, OnInit  {
       data: { selectedUser: user }
     });
  
-}
-
-
+  }
 
 }
