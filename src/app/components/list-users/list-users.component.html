@@ -36,27 +36,27 @@
 
       <ng-container matColumnDef="Operations">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Operations </th>
-        <td mat-cell *matCellDef="let row" class=".op-tr">
+        <td mat-cell *matCellDef="let row" class="tool-controls">
           
-          <div class="op-tr">
-          <button mat-icon-button class="col-4" (click)="openDialog(row)" >
-            <mat-icon >description</mat-icon>
-          </button>
+         
+            <button mat-icon-button class="col-4" (click)="openDialog(row)" >
+              <mat-icon >description</mat-icon>
+            </button>
+            
+            <a [routerLink]="['/edit-user/',row._id]">
+            <button mat-icon-button class="col-4" >
+              <mat-icon>edit</mat-icon>
+            </button>
+            </a>
           
-          <a [routerLink]="['/edit-user/',row._id]">
-          <button mat-icon-button class="col-4" >
-            <mat-icon>edit</mat-icon>
-          </button>
-           </a>
-        
 
-          <button mat-icon-button color="warn" class="col-4" (click)="deleteUserBox(row._id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-
+            <button mat-icon-button color="warn" class="col-4" (click)="deleteUserBox(row._id)">
+              <mat-icon>delete</mat-icon>
+            </button>
         </td>
       </ng-container>
+
+      
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

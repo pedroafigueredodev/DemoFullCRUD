@@ -1,8 +1,6 @@
-.op-tr {
-  width: 130%;
-  
+.tool-controls{
+  padding-right: 10px !important;
 }
-
 
 /* Table styles */
 table {
